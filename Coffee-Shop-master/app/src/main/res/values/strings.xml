@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Coffee Shop</string>
+    <string name="search_anything">Search anything...</string>
+    <string name="good_morning">Good Morning</string>
+    <string name="get_started">Get Started</string>
+    <string name="find_the_best_coffee_nfor_you">Find the best coffee\nfor you</string>
+    <string name="started">Started</string>
+    <string name="grab_your_first_coffee_in_this_morning">Grab your first coffee in this morning</string>
+    <string name="popular">Popular</string>
+    <string name="see_all">See all</string>
+    <string name="available_offers">Available offers</string>
+    <string name="cart">Cart</string>
+    <string name="default_web_client_id" translatable="false">959179691960-g1odigheh8lq39tsclvnhscv9ku9vdr1.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://fir-demo-cb501-default-rtdb.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">959179691960</string>
+    <string name="google_api_key" translatable="false">AIzaSyBwgUlT3iM_pRbySrIscsCIsrPa1vf_JqA</string>
+    <string name="google_app_id" translatable="false">1:959179691960:android:0c4c86f6fcd828b27c614d</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBwgUlT3iM_pRbySrIscsCIsrPa1vf_JqA</string>
+    <string name="google_storage_bucket" translatable="false">fir-demo-cb501.appspot.com</string>
+    <string name="project_id" translatable="false">fir-demo-cb501</string>
+</resources>
