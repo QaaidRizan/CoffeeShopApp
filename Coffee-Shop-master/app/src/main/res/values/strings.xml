@@ -9,7 +9,7 @@
     <string name="popular">Popular</string>
     <string name="see_all">See all</string>
     <string name="available_offers">Available offers</string>
-    <string name="cart">Cart</string>
+    <string name="cart" translatable="false">Cart</string>
     <string name="default_web_client_id" translatable="false">959179691960-g1odigheh8lq39tsclvnhscv9ku9vdr1.apps.googleusercontent.com</string>
     <string name="firebase_database_url" translatable="false">https://fir-demo-cb501-default-rtdb.firebaseio.com</string>
     <string name="gcm_defaultSenderId" translatable="false">959179691960</string>
@@ -18,4 +18,8 @@
     <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBwgUlT3iM_pRbySrIscsCIsrPa1vf_JqA</string>
     <string name="google_storage_bucket" translatable="false">fir-demo-cb501.appspot.com</string>
     <string name="project_id" translatable="false">fir-demo-cb501</string>
+    <string name="proceed_to_checkout">Proceed to Checkout</string>
+    <string name="enter_your_phone_number">Enter Your Phone Number</string>
+    <string name="enter_your_address">Enter Your Address</string>
+    <string name="enter_your_name">Enter Your Name</string>
 </resources>

@@ -191,7 +191,6 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/proceedCheckoutBtn"
-            android:lineBreakStyle="@android:style/Widget.Button"
             android:layout_width="match_parent"
             android:layout_margin="16dp"
             android:layout_height="wrap_content"
@@ -200,8 +199,7 @@
             android:textSize="18sp"
             android:textStyle="bold"
             android:background="@drawable/orange_bg"
-            android:text="Proceed to Checkout"
-            />
+            android:text="@string/proceed_to_checkout"/>
 
     </LinearLayout>
 
