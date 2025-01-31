@@ -1,7 +1,10 @@
+import org.jetbrains.kotlin.storage.CacheResetOnProcessCanceled.enabled
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.google.gms.google.services)
+
 }
 
 android {
@@ -38,11 +41,15 @@ android {
     buildFeatures{
 
         viewBinding = true
+
     }
+
 
 }
 
 dependencies {
+
+
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -61,6 +68,9 @@ dependencies {
     implementation ("com.google.android.gms:play-services-location:18.0.0")
     implementation ("com.google.android.gms:play-services-maps:18.0.0")
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
+    implementation ("com.google.firebase:firebase-auth:22.0.0")
+    implementation ("androidx.cardview:cardview:1.0.0")
+
     //noinspection UseTomlInstead
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.4")
     //noinspection UseTomlInstead

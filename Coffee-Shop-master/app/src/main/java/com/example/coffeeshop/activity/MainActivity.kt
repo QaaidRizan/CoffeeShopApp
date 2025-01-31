@@ -11,6 +11,7 @@ import com.example.coffeeshop.adapter.PopularAdapter
 import com.example.coffeeshop.databinding.ActivityMainBinding
 import com.example.coffeeshop.viewmodel.MainViewModel
 
+
 class MainActivity : BaseActivity() {
 
     private val viewModel = MainViewModel()
@@ -22,11 +23,20 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         binding.bottomNavigation.background = null
+        binding.appBar.background=null
 
         initCategory()
         initPopular()
         initOffer()
         bottomMenu()
+
+
+
+        /*binding.btnOrder.setOnClickListener {
+            val intent = Intent(this@MainActivity, OrderActivity::class.java)
+            startActivity(intent)
+        }*/
+
     }
 
     private fun bottomMenu() {

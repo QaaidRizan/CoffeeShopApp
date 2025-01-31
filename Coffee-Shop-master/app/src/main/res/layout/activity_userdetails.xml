@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -8,17 +7,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/coffee_bean"
     tools:context=".activity.LoginActivity">
-
-    <!-- Semi-transparent Overlay -->
-    <View
-        android:id="@+id/overlay"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="#80000000"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- CardView for Login Form -->
     <androidx.cardview.widget.CardView
@@ -35,9 +23,9 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="437dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/brown_gradient"
-            android:padding="32dp">
+            android:padding="24dp">
 
             <!-- Title -->
             <TextView
@@ -68,22 +56,23 @@
                 <EditText
                     android:id="@+id/usernameInput"
                     android:layout_width="0dp"
-                    android:layout_height="48dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@null"
                     android:hint="Username"
                     android:inputType="textPersonName"
                     android:minHeight="48dp"
+                    android:padding="8dp"
                     android:textColor="@android:color/white"
                     android:textColorHint="@android:color/white" />
             </LinearLayout>
 
-            <!-- Password Field with Icon -->
+            <!-- Password Field with Icon (Same style as Username) -->
             <LinearLayout
                 android:id="@+id/passwordContainer"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/edittext_background_rounded"
                 android:orientation="horizontal"
                 android:padding="8dp"
@@ -94,12 +83,13 @@
                 <EditText
                     android:id="@+id/passwordInput"
                     android:layout_width="0dp"
-                    android:layout_height="48dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@null"
                     android:hint="Password"
                     android:inputType="textPassword"
                     android:minHeight="48dp"
+                    android:padding="8dp"
                     android:textColor="@android:color/white"
                     android:textColorHint="@android:color/white" />
             </LinearLayout>
@@ -111,13 +101,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:backgroundTint="@color/orange"
-
-            android:text="Login"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/passwordContainer" />
+                android:text="Login"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/passwordContainer" />
 
             <!-- Forgot Password -->
             <TextView

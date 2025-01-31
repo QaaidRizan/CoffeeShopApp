@@ -17,6 +17,8 @@ class LoginActivity : BaseActivity() {
 
         // Handle Login Button Click
         binding.loginButton.setOnClickListener {
+
+            startActivity(Intent(this, MainActivity::class.java))
             // Add logic to validate credentials or navigate further
             // Example: Show a Toast
             // Toast.makeText(this, "Login Clicked", Toast.LENGTH_SHORT).show()

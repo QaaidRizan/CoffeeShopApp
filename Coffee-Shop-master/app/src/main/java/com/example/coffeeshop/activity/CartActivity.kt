@@ -9,6 +9,7 @@ import com.example.coffeeshop.adapter.CartAdapter
 import com.example.coffeeshop.databinding.ActivityCartBinding
 import com.example.coffeeshop.helper.ChangeNumberItemsListener
 import com.example.coffeeshop.helper.ManagmentCart
+import com.example.coffeeshop.model.CartItem
 
 
 class CartActivity : BaseActivity() {
@@ -25,15 +26,34 @@ class CartActivity : BaseActivity() {
 
         management = ManagmentCart(this)
 
-        calculateCart()
+        calculateCart()  // To initialize the cart values
         setVariable()
         initCartList()
 
         // SetOnClickListener for proceedCheckoutBtn
         binding.proceedCheckoutBtn.setOnClickListener {
-            startActivity(Intent(this, PlaceOrderActivity::class.java))
+            val totalPrice = calculateTotalPrice()  // Calculate total price
 
+            // Pass the total price to PlaceOrderActivity
+            val intent = Intent(this, PlaceOrderActivity::class.java)
+            intent.putExtra("TOTAL_PRICE", totalPrice) // Pass total price
+            startActivity(intent)
         }
+        binding.proceedCheckoutBtn.setOnClickListener {
+            val totalPrice = calculateTotalPrice()
+
+            // Map your cart items to the CartItem class
+            val cartDetails = management.getListCart().map {
+                CartItem(productName = it.title, quantity = it.numberInCart)
+            }
+
+            // Create an intent and pass the Parcelable ArrayList
+            val intent = Intent(this, PlaceOrderActivity::class.java)
+            intent.putExtra("TOTAL_PRICE", totalPrice)
+            intent.putParcelableArrayListExtra("CART_DETAILS", ArrayList(cartDetails)) // Pass Parcelable ArrayList
+            startActivity(intent)
+        }
+
     }
 
     private fun initCartList() {
@@ -47,7 +67,6 @@ class CartActivity : BaseActivity() {
                     override fun onChanged() {
                         calculateCart()
                     }
-
                 })
         }
     }
@@ -71,4 +90,15 @@ class CartActivity : BaseActivity() {
             totalPriceTxt.text = "$$total"
         }
     }
+
+    // Function to calculate total price
+    private fun calculateTotalPrice(): Double {
+        val percentTax = 0.02
+        val delivery = 15.0
+        tax = Math.round((management.getTotalFee() * percentTax) * 100) / 100.0
+        val total = Math.round((management.getTotalFee() + tax + delivery) * 100) / 100.0
+        return total
+    }
 }
+
+
