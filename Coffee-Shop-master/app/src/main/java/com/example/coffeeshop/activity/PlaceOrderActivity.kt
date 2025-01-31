@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.example.coffeeshop.R
 import com.example.coffeeshop.databinding.ActivityPlaceOrderBinding
 import com.example.coffeeshop.model.CartItem
 import com.example.coffeeshop.model.Order
@@ -20,13 +21,20 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import java.util.*
 
-class PlaceOrderActivity : AppCompatActivity() {
+class PlaceOrderActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var binding: ActivityPlaceOrderBinding
     private lateinit var database: DatabaseReference
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+    private lateinit var googleMap: GoogleMap
     private val LOCATION_PERMISSION_REQUEST_CODE = 1000
 
     @SuppressLint("MissingPermission")
@@ -41,7 +49,11 @@ class PlaceOrderActivity : AppCompatActivity() {
         val totalPrice = intent.getDoubleExtra("TOTAL_PRICE", 0.0)
         val cartDetails: ArrayList<CartItem>? = intent.getParcelableArrayListExtra("CART_DETAILS")
         val productCount = cartDetails?.size ?: 0
-        binding.etTotalPrice.setText("Total: "+totalPrice.toString())
+        binding.etTotalPrice.setText("Total: "+totalPrice.toString()+"$")
+
+        // Initialize the map
+        val mapFragment = supportFragmentManager.findFragmentById(R.id.mapContainer) as SupportMapFragment
+        mapFragment.getMapAsync(this)
 
         binding.btnGetLocation.setOnClickListener {
             fetchCurrentLocation()
@@ -52,6 +64,11 @@ class PlaceOrderActivity : AppCompatActivity() {
             startActivity(Intent(this, OrderActivity::class.java))
         }
 
+    }
+
+    // This method will be called when the map is ready
+    override fun onMapReady(map: GoogleMap) {
+        googleMap = map
     }
 
     private fun fetchCurrentLocation() {
@@ -75,6 +92,9 @@ class PlaceOrderActivity : AppCompatActivity() {
         fusedLocationProviderClient.lastLocation
             .addOnSuccessListener { location ->
                 if (location != null) {
+                    val currentLatLng = LatLng(location.latitude, location.longitude)
+                    googleMap.addMarker(MarkerOptions().position(currentLatLng).title("You are here"))
+                    googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 15f))
                     binding.etAddress.setText(getAddressFromLatLng(location.latitude, location.longitude))
                 } else {
                     Toast.makeText(this, "Unable to fetch location. Try again.", Toast.LENGTH_SHORT).show()
@@ -115,7 +135,7 @@ class PlaceOrderActivity : AppCompatActivity() {
 
         val orderId = database.push().key ?: return
 
-        // Extract product names from the cart
+        // Extract product names from the cart using map
         val productNames = cartDetails?.map { it.productName } ?: emptyList()
 
         val order = Order(
