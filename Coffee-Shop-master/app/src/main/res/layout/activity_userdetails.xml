@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -8,7 +9,6 @@
     android:background="@drawable/coffee_bean"
     tools:context=".activity.LoginActivity">
 
-    <!-- CardView for Login Form -->
     <androidx.cardview.widget.CardView
         android:id="@+id/loginCard"
         android:layout_width="0dp"
@@ -27,7 +27,6 @@
             android:background="@drawable/brown_gradient"
             android:padding="24dp">
 
-            <!-- Title -->
             <TextView
                 android:id="@+id/loginTitle"
                 android:layout_width="wrap_content"
@@ -40,61 +39,38 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <!-- Username Field with Icon -->
-            <LinearLayout
-                android:id="@+id/usernameContainer"
+            <EditText
+                android:id="@+id/usernameInput"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:background="@drawable/edittext_background_rounded"
-                android:orientation="horizontal"
+                android:hint="Email"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
                 android:padding="8dp"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/loginTitle">
+                app:layout_constraintTop_toBottomOf="@id/loginTitle"/>
 
-                <EditText
-                    android:id="@+id/usernameInput"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:hint="Username"
-                    android:inputType="textPersonName"
-                    android:minHeight="48dp"
-                    android:padding="8dp"
-                    android:textColor="@android:color/white"
-                    android:textColorHint="@android:color/white" />
-            </LinearLayout>
-
-            <!-- Password Field with Icon (Same style as Username) -->
-            <LinearLayout
-                android:id="@+id/passwordContainer"
+            <EditText
+                android:id="@+id/passwordInput"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/edittext_background_rounded"
-                android:orientation="horizontal"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:minHeight="48dp"
                 android:padding="8dp"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/usernameContainer">
+                app:layout_constraintTop_toBottomOf="@id/usernameInput"/>
 
-                <EditText
-                    android:id="@+id/passwordInput"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:hint="Password"
-                    android:inputType="textPassword"
-                    android:minHeight="48dp"
-                    android:padding="8dp"
-                    android:textColor="@android:color/white"
-                    android:textColorHint="@android:color/white" />
-            </LinearLayout>
-
-            <!-- Login Button -->
             <Button
                 android:id="@+id/loginButton"
                 android:layout_width="0dp"
@@ -106,9 +82,8 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/passwordContainer" />
+                app:layout_constraintTop_toBottomOf="@id/passwordInput"/>
 
-            <!-- Forgot Password -->
             <TextView
                 android:id="@+id/forgotPassword"
                 android:layout_width="wrap_content"
@@ -120,7 +95,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/loginButton" />
 
-            <!-- Signup Option -->
             <TextView
                 android:id="@+id/signupText"
                 android:layout_width="wrap_content"
@@ -132,7 +106,7 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/forgotPassword" />
+                app:layout_constraintTop_toBottomOf="@id/forgotPassword"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
