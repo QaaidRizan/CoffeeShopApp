@@ -27,6 +27,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import java.text.SimpleDateFormat
 import java.util.*
 
 class PlaceOrderActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -139,12 +140,13 @@ class PlaceOrderActivity : AppCompatActivity(), OnMapReadyCallback {
         val productNames = cartDetails?.map { it.productName } ?: emptyList()
 
         val order = Order(
-            customerName = name,
-            customerPhone = phone,
-            address = address,
+            customerName = binding.etCustomerName.text.toString(),
+            customerPhone = binding.etCustomerPhone.text.toString(),
+            address = binding.etAddress.text.toString(),
             totalPrice = totalPrice,
             productCount = productCount,
-            productNames = productNames // Store product names in Firebase
+            productNames = productNames,
+            orderDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date())
         )
 
         database.child(orderId).setValue(order)

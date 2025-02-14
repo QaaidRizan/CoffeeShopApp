@@ -38,6 +38,5 @@ class OrderActivity : AppCompatActivity() {
 
         // Trigger data loading
         mainViewModel.loadOrders()
-
     }
 }
